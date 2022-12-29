@@ -6,4 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Pages\Users\NewFolder\**" />
+    <Content Remove="Pages\Users\NewFolder\**" />
+    <EmbeddedResource Remove="Pages\Users\NewFolder\**" />
+    <None Remove="Pages\Users\NewFolder\**" />
+  </ItemGroup>
+
 </Project>
