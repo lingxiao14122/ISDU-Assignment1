@@ -5,4 +5,40 @@
     ViewData["location"] = "Users";
 }
 
-<p>HUH</p>
+<br />
+<h2>List of Clients</h2>
+<a class="btn btn-primary btn-sm" href="/Users/Create">New Client</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Employee No</th>
+            <th>Age</th>
+            <th>Dept ID</th>
+            <th>Active</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.listUsers)
+        {
+            <tr>
+                <td>@user.id</td>
+                <td>@user.user_name</td>
+                <td>@user.email</td>
+                <td>@user.employee_number</td>
+                <td>@user.age</td>
+                <td>@user.dept_id</td>
+                <td>@user.active</td>
+                <td>@user.created_at</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Edit?id=@user.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Clients/Delete?id=@user.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
