@@ -54,6 +54,7 @@ namespace Assignment1.Pages.Users
         public String email;
         public String employee_number;
         public String age;
+        public String password;
         public String dept_id;
         public String active;
         public String created_at;
