@@ -32,7 +32,6 @@ namespace Assignment1.Pages.Users
                                 user.email = reader.GetString(2);
                                 user.employee_number = reader.GetString(3);
                                 user.age = "" + reader.GetInt32(4);
-                                // 5 password
                                 user.password = reader.GetString(5);
                                 user.dept_id = "" + reader.GetInt32(6);
                                 user.active = "" + reader.GetBoolean(7);
@@ -56,10 +55,10 @@ namespace Assignment1.Pages.Users
             user.age = Request.Form["age"];
             user.dept_id = Request.Form["dept_id"];
             user.active = Request.Form["active"] == "on" ? "1" : "0";
-            String password = Request.Form["password"];
+            user.password = Request.Form["password"];
 
             if (user.user_name.Length == 0 || user.email.Length == 0 ||
-                user.employee_number.Length == 0 || user.age.Length == 0 || password.Length == 0 ||
+                user.employee_number.Length == 0 || user.age.Length == 0 || user.password.Length == 0 ||
                 user.dept_id.Length == 0)
             {
                 errorMessage = "All the fields are required";
@@ -82,7 +81,7 @@ namespace Assignment1.Pages.Users
                         command.Parameters.AddWithValue("@email", user.email);
                         command.Parameters.AddWithValue("@employee_number", user.employee_number);
                         command.Parameters.AddWithValue("@age", user.age);
-                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@password", user.password);
                         command.Parameters.AddWithValue("@dept_id", user.dept_id);
                         command.Parameters.AddWithValue("@active", user.active);
 
