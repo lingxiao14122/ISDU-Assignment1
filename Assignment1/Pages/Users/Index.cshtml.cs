@@ -17,7 +17,7 @@ namespace Assignment1.Pages.Users
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM Users";
+                    String sql = "SELECT * FROM [dbo].[Users] INNER JOIN [dbo].[Department] ON Users.DeptID=Department.DeptID";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -34,7 +34,7 @@ namespace Assignment1.Pages.Users
                                 user.dept_id = "" + reader.GetInt32(6);
                                 user.active = "" + reader.GetBoolean(7);
                                 user.created_at = reader.GetDateTime(8).ToString();
-
+                                user.dept_name= reader.GetString(10);
                                 listUsers.Add(user);
                                 Debug.WriteLine(user.id);
                             }
@@ -59,6 +59,7 @@ namespace Assignment1.Pages.Users
         public String dept_id;
         public String active;
         public String created_at;
+        public String dept_name;
     }
 
 
