@@ -4,3 +4,31 @@
     ViewData["Title"] = "Department page";
     ViewData["location"] = "Department";
 }
+
+<br />
+<h2>List of Departments</h2>
+<a class="btn btn-primary btn-sm" href="/Department/Create">New Department</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Department Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model.listDepartments)
+        {
+            <tr>
+                <td>@department.id</td>
+                <td>@department.name</td>
+                <td>@department.description</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Department/Edit?id=@department.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Department/Delete?id=@department.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
