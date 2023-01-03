@@ -1,3 +1,4 @@
+using Assignment1.Pages.Departments;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
@@ -7,10 +8,39 @@ namespace Assignment1.Pages.Users
     public class CreateModel : PageModel
     {
         public User user = new User();
+        public List<Departments.Department> listDepartments = new List<Departments.Department>();
         public String errorMessage = "";
         public String successMessage = "";
         public void OnGet()
         {
+            try
+            {
+                String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    String sql = "SELECT * FROM Department";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Departments.Department department = new Departments.Department();
+                                department.id = "" + reader.GetInt32(0);
+                                department.name = reader.GetString(1);
+                                department.description = reader.GetString(2);
+                                listDepartments.Add(department);
+                                Console.WriteLine(department.id);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.ToString());
+            }
         }
 
         public void OnPost()

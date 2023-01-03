@@ -44,9 +44,14 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Dept ID</label>
+        <label class="col-sm-3 col-form-label">Department</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="dept_id" value="@Model.user.dept_id" />
+            <select name="dept_id" class="form-select">
+                @foreach (var department in Model.listDepartments)
+                {
+                    <!option value="@department.id" @(department.id == Model.user.dept_id ? "selected" : "") >@department.name</!option>
+                }
+            </select>
         </div>
     </div>
     <div class="row mb-3">
