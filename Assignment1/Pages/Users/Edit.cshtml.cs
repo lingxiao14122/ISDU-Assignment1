@@ -65,7 +65,6 @@ namespace Assignment1.Pages.Users
                 return;
             }
 
-            // save new client to db
             try
             {
                 String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";
@@ -96,7 +95,7 @@ namespace Assignment1.Pages.Users
             }
 
             user.user_name = ""; user.email = ""; user.employee_number = ""; user.age = ""; user.dept_id = ""; user.active = "";
-            successMessage = "New Client Added Correctly";
+            successMessage = "Edit Successful";
 
             Response.Redirect("/Users/Index");
         }

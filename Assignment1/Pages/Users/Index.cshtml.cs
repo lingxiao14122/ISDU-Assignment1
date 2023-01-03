@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using static Assignment1.Pages.Users.IndexModel;
 
 namespace Assignment1.Pages.Users
@@ -35,7 +36,7 @@ namespace Assignment1.Pages.Users
                                 user.created_at = reader.GetDateTime(8).ToString();
 
                                 listUsers.Add(user);
-                                Console.WriteLine(user.id);
+                                Debug.WriteLine(user.id);
                             }
                         }
                     }
