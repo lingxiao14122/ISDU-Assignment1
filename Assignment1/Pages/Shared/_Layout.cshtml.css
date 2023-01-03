@@ -40,3 +40,7 @@ button.accept-policy {
 .sidebar a:not(.active){
     color: black !important;
 }
+
+.sidebar a:not(.active):hover {
+    background-color: #d4d4d4;
+}
