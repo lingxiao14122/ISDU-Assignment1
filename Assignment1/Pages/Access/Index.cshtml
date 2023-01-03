@@ -4,3 +4,33 @@
     ViewData["Title"] = "User Access page";
     ViewData["location"] = "Access";
 }
+
+<br />
+<h2>User Access</h2>
+<a class="btn btn-primary btn-sm" href="/Access/Create">New User Access</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Department Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var access in Model.listAccess)
+        {
+            <tr>
+                <td>@access.id</td>
+                <td>@access.name</td>
+                <td>@access.description</td>
+                <td>
+                    <div class="d-block" style="width: max-content">
+                        <a class="btn btn-primary btn-sm" href="/Access/Edit?id=@access.id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/Access/Delete?id=@access.id">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

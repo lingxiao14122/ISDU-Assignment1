@@ -1,0 +1,30 @@
+﻿@page
+@using System.Data.SqlClient;
+@using System.Diagnostics;
+@{
+    try
+    {
+        String id = Request.Query["id"];
+
+        string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            String sql = "DELETE FROM UserAccess WHERE UserAccessID=@id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Debug.WriteLine(ex.Message);
+        // TODO: warn user this access will be removed from user, then just cascade and delete
+    }
+
+    Response.Redirect("/Access");
+}
