@@ -1,0 +1,35 @@
+﻿@page
+@model Assignment1.Pages.GrantAccess.IndexModel
+@{
+    ViewData["Title"] = "Grant Access page";
+    ViewData["location"] = "GrantAccess";
+}
+
+<br />
+<h2>Grant Access</h2>
+<a class="btn btn-primary btn-sm" href="/GrantAccess/Create">Create New</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User name</th>
+            <th>Department name</th>
+            <th>Access name</th>
+            <th>Action</th>
+    </thead>
+    <tbody>
+        @foreach (var elem in Model.listDeptUserAccess)
+        {
+            <tr>
+                <td>@elem.user_name</td>
+                <td>@elem.department_name</td>
+                <td>@elem.user_access_name</td>
+                <td>
+                    <div class="d-block" style="width: max-content">
+                        <a class="btn btn-primary btn-sm" href="/GrantAccess/Edit?user_id=@elem.user_id&access_id=@elem.access_id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/GrantAccess/Delete?user_id=@elem.user_id&access_id=@elem.access_id">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
