@@ -44,7 +44,6 @@ namespace Assignment1.Pages.GrantAccess
                                 department.name = reader.GetString(1);
                                 department.description = reader.GetString(2);
                                 list.Add(department);
-                                Console.WriteLine(department.id);
                             }
                         }
                     }

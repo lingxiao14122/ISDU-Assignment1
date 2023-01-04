@@ -32,7 +32,6 @@ namespace Assignment1.Pages.Users
                                 department.name = reader.GetString(1);
                                 department.description = reader.GetString(2);
                                 listDepartments.Add(department);
-                                Console.WriteLine(department.id);
                             }
                         }
                     }

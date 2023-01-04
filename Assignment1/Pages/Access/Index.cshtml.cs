@@ -27,7 +27,6 @@ namespace Assignment1.Pages.Access
                                 department.name = reader.GetString(1);
                                 department.description = reader.GetString(2);
                                 listAccess.Add(department);
-                                Console.WriteLine(department.id);
                             }
                         }
                     }
