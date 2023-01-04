@@ -1,0 +1,62 @@
+﻿@page
+@model Assignment1.Pages.GrantAccess.EditModel
+@{
+    ViewData["Title"] = "Grant Access page";
+    ViewData["location"] = "GrantAccess";
+}
+
+
+<br />
+<h2>Grant Access</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+    <input type="hidden" name="original_user_id" value="@Model.userAccessMap.user_id" />
+    <input type="hidden" name="original_access_id" value="@Model.userAccessMap.access_id" />
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">User</label>
+        <div class="col-sm-6">
+            <select name="user_id" class="form-select">
+                @foreach (var user in Model.listUsers)
+                {
+                    <!option value="@user.id" @(user.id == Model.userAccessMap.user_id ? "selected" : "")>@user.user_name</!option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Access</label>
+        <div class="col-sm-6">
+            <select name="access_id" class="form-select">
+                @foreach (var access in Model.listAccess)
+                {
+                    <!option value="@access.id" @(access.id == Model.userAccessMap.access_id ? "selected" : "")>@access.name</!option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@Model.successMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/GrantAccess" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
