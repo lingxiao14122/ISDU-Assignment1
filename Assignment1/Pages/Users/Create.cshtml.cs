@@ -1,5 +1,3 @@
-using Assignment1.Pages.Departments;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
@@ -50,11 +48,11 @@ namespace Assignment1.Pages.Users
             user.employee_number = Request.Form["employee_number"];
             user.age = Request.Form["age"];
             user.dept_id = Request.Form["dept_id"];
-            user.active = Request.Form["active"]== "on" ? "1" : "0";
+            user.active = Request.Form["active"] == "on" ? "1" : "0";
             String password = Request.Form["password"];
 
-            if (user.user_name.Length == 0 || user.email.Length == 0 || 
-                user.employee_number.Length == 0 || user.age.Length == 0 || password.Length== 0 ||
+            if (user.user_name.Length == 0 || user.email.Length == 0 ||
+                user.employee_number.Length == 0 || user.age.Length == 0 || password.Length == 0 ||
                 user.dept_id.Length == 0)
             {
                 errorMessage = "All the fields are required";
@@ -70,7 +68,7 @@ namespace Assignment1.Pages.Users
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "INSERT INTO Users (UserName, Email, EmployeeNumber, Age, Password, DeptID, Active)" + 
+                    String sql = "INSERT INTO Users (UserName, Email, EmployeeNumber, Age, Password, DeptID, Active)" +
                                     " VALUES (@user_name, @email, @employee_number, @age, @password, @dept_id, @active)";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -93,7 +91,7 @@ namespace Assignment1.Pages.Users
                 return;
             }
 
-            user.user_name = ""; user.email = ""; user.employee_number = ""; user.age = ""; user.dept_id = ""; user.active = ""; 
+            user.user_name = ""; user.email = ""; user.employee_number = ""; user.age = ""; user.dept_id = ""; user.active = "";
             successMessage = "New Added Correctly";
 
             Response.Redirect("/Users/Index");

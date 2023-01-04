@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
@@ -28,7 +27,7 @@ namespace Assignment1.Pages.Users
                         {
                             if (reader.Read())
                             {
-                                user.id= "" + reader.GetInt32(0);
+                                user.id = "" + reader.GetInt32(0);
                                 user.user_name = reader.GetString(1);
                                 user.email = reader.GetString(2);
                                 user.employee_number = reader.GetString(3);

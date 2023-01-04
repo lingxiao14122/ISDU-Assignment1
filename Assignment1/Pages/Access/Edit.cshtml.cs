@@ -1,5 +1,3 @@
-using Assignment1.Pages.Departments;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 

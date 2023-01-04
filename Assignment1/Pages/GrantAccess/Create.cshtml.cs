@@ -1,7 +1,5 @@
 using Assignment1.Pages.Users;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
@@ -25,7 +23,7 @@ namespace Assignment1.Pages.GrantAccess
 
         private List<Access.Access> getListAccess()
         {
-            List <Access.Access> list = new List<Access.Access>();
+            List<Access.Access> list = new List<Access.Access>();
             try
             {
                 String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";
@@ -58,7 +56,7 @@ namespace Assignment1.Pages.GrantAccess
 
         private List<Users.User> getListUsers()
         {
-            List < Users.User > list = new List<Users.User>();
+            List<Users.User> list = new List<Users.User>();
             try
             {
                 String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";
@@ -130,7 +128,7 @@ namespace Assignment1.Pages.GrantAccess
                 return;
             }
 
-            userAccessMap.user_id = ""; userAccessMap.access_id = "";;
+            userAccessMap.user_id = ""; userAccessMap.access_id = ""; ;
             successMessage = "New Added Correctly";
 
             Response.Redirect("/GrantAccess");
