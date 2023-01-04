@@ -95,6 +95,9 @@ namespace Assignment1.Pages.Users
                 return;
             }
 
+            // hash password
+            user.password = CreateModel.hashpass(user.password);
+
             try
             {
                 String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";

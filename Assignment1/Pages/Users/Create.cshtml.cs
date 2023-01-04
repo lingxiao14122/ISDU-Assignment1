@@ -2,6 +2,7 @@ using Assignment1.Pages.Departments;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace Assignment1.Pages.Users
 {
@@ -61,6 +62,9 @@ namespace Assignment1.Pages.Users
                 return;
             }
 
+            // hash password
+            password = hashpass(password);
+
             try
             {
                 String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=assignment;Integrated Security=True";
@@ -94,6 +98,20 @@ namespace Assignment1.Pages.Users
             successMessage = "New Added Correctly";
 
             Response.Redirect("/Users/Index");
+        }
+
+        public static String hashpass(String password)
+        {
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(password);
+            byte[] result;
+
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                result = sha256Hash.ComputeHash(data);
+            }
+
+            // Return the hexadecimal string
+            return System.Text.Encoding.UTF8.GetString(result);
         }
     }
 }
